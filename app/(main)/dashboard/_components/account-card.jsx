@@ -1,6 +1,6 @@
 "use client";
 
-import { updateDefaultAccount } from "@/actions/accounts";
+import { updateDefaultAccount } from "@/actions/account";
 import {
   Card,
   CardContent,
