@@ -3,7 +3,10 @@ import { z } from "zod";
 export const accountSchema = z.object({
   name: z.string().min(1, "Name is required"),
   type: z.enum(["CURRENT", "SAVINGS"]),
-  balance: z.string().min(1, "Initial balance is required"),
+  balance: z.number({
+    required_error: "Balance is required",
+    invalid_type_error: "Balance must be a number",
+  }).min(0, "Balance must be positive"),
   isDefault: z.boolean().default(false),
 });
 

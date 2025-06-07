@@ -3,7 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Plus } from "lucide-react";
 import React from "react";
 
-function DashboardPage() {
+async function DashboardPage() {
+    const accounts = await getUserAccounts();
   return (
     <div className="px-5">
       {/* budget progrress */}

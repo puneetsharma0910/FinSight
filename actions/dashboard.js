@@ -4,11 +4,16 @@ import { db } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { parse } from "date-fns";
 import { revalidatePath } from "next/cache";
+import { Decimal } from "@prisma/client/runtime/library";
 
 const serializeTransaction = (obj) => {
   const serialized = { ...obj };
   if (obj.balance) {
     serialized.balance = obj.balance.toNumber();
+  }
+
+  if (obj.amount) {
+    serialized.amount = obj.amount.toNumber();
   }
 };
 
@@ -22,7 +27,7 @@ export async function createAccount(data) {
     if (!user) throw new Error("User not found");
 
     //convert balance to float before saving
-    const balanceFloat = parse(data.balance);
+    const balanceFloat = parseFloat(data.balance);
     if (isNaN(balanceFloat)) {
       throw new Error("Invalid balance amount");
     }
@@ -53,5 +58,40 @@ export async function createAccount(data) {
     return { success: true, data: serializedAccount };
   } catch (error) {
     throw new Error(error.message);
+  }
+}
+
+
+export async function getUserAccounts() {
+  const { userId } = await auth();
+  if (!userId) throw new Error("Unauthorized");
+
+  const user = await db.user.findUnique({
+    where: { clerkUserId: userId },
+  });
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  try {
+    const accounts = await db.account.findMany({
+      where: { userId: user.id },
+      orderBy: { createdAt: "desc" },
+      include: {
+        _count: {
+          select: {
+            transactions: true,
+          },
+        },
+      },
+    });
+
+    // Serialize accounts before sending to client
+    const serializedAccounts = accounts.map(serializeTransaction);
+
+    return serializedAccounts;
+  } catch (error) {
+    console.error(error.message);
   }
 }

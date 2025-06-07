@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FinSight - AI-Powered Financial Management Platform
 
-## Getting Started
 
-First, run the development server:
+## Overview
+
+FinSight is a sophisticated financial management platform built with Next.js 14, leveraging AI for intelligent transaction processing and financial insights. The platform offers comprehensive account management, real-time transaction tracking, and automated budget monitoring.
+
+## 🚀 Key Features
+
+- **Smart Account Management**
+  - Multi-account support
+  - Real-time balance tracking
+  - Account type categorization
+
+- **AI-Powered Features**
+  - Receipt scanning and analysis
+  - Monthly financial insights
+  - Intelligent categorization
+
+- **Transaction Management**
+  - Bulk operations support
+  - Recurring transactions
+  - Real-time filtering and sorting
+
+- **Analytics & Reporting**
+  - Interactive charts
+  - Monthly budget tracking
+  - Automated report generation
+
+## 🛠️ Technical Stack
+
+### Frontend
+- Next.js 15 (App Router)
+- React Server Components
+- Tailwind CSS
+- Shadcn/ui Components
+
+### Backend & Services
+- PostgreSQL (Supabase)
+- Prisma ORM
+- Clerk Authentication
+- Inngest (Cron Jobs)
+- Arcjet (Rate Limiting)
+
+### AI & Analytics
+- OpenAI Integration
+- Chart.js
+- Custom Analytics Engine
+
+## 📦 Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/finsight.git
+
+# Navigate to project directory
+cd finsight
+
+# Install dependencies
+npm install
+
+# Setup environment variables
+cp .env.example .env
+
+# Generate Prisma client
+npx prisma generate
+
+# Push database schema
+npx prisma db push
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Environment Setup
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Required environment variables:
+```env
+# Authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Database
+DATABASE_URL=
+DIRECT_URL=
 
-## Learn More
+# Services
+ARCJET_KEY=
+OPENAI_API_KEY=
+RESEND_API_KEY=
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🏗️ Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+finsight/
+├── app/
+│   ├── (auth)/          # Authentication routes
+│   ├── (main)/          # Main application routes
+│   ├── api/             # API endpoints
+│   └── lib/             # Shared utilities
+├── components/          # React components
+├── actions/            # Server actions
+├── prisma/            # Database schema
+└── inngest/           # Cron jobs
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🧪 Testing
 
-## Deploy on Vercel
+```bash
+# Run unit tests
+npm run test
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Run integration tests
+npm run test:integration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Run E2E tests
+npm run test:e2e
+```
+
+
+## 🚀 Deployment
+
+```bash
+# Build for production
+npm run build
+
+# Deploy to Vercel
+vercel deploy
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
