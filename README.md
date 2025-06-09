@@ -28,7 +28,6 @@ You can use Markdown image syntax and update the paths/URLs as needed.
 - [Tech Stack](#tech-stack)
 - [Architecture](#architecture)
 - [Project Structure](#project-structure)
-- [Setup & Installation](#setup--installation)
 - [Environment Variables](#environment-variables)
 - [Core Modules & Workflows](#core-modules--workflows)
 - [AI & Automation](#ai--automation)
@@ -37,6 +36,7 @@ You can use Markdown image syntax and update the paths/URLs as needed.
 - [API Endpoints](#api-endpoints)
 - [My Role & Learning](#my-role--learning)
 - [Why This Project? (Motivation & Design Decisions)](#why-this-project-motivation--design-decisions)
+- [Setup & Installation](#setup--installation)
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
@@ -123,39 +123,6 @@ finsight/
 ├── tests/                  # Unit and integration tests
 ├── .env.example            # Example environment variables
 └── README.md               # Project documentation
-```
-
----
-
-## Setup & Installation
-
-### Prerequisites
-
-- Node.js 18+
-- npm 9+
-- PostgreSQL database (local or Supabase)
-- Clerk, Gemini/OpenAI, Resend, Arcjet accounts for API keys
-
-### Steps
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/yourusername/finsight.git
-cd finsight
-
-# 2. Install dependencies
-npm install
-
-# 3. Configure environment variables
-cp .env.example .env.local
-# Edit .env.local with your credentials
-
-# 4. Set up the database
-npx prisma generate
-npx prisma db push
-
-# 5. Start the development server
-npm run dev
 ```
 
 ---
@@ -256,14 +223,7 @@ npm install -g vercel
 vercel deploy --prod
 ```
 
-### Docker
 
-```bash
-docker build -t finsight:latest .
-docker run -p 3000:3000 --env-file .env.local finsight:latest
-```
-
----
 
 ## API Endpoints
 
@@ -283,19 +243,19 @@ As the sole developer and architect of **FinSight**, I was responsible for the e
 Key highlights of my contribution:
 - **System Design:** Architected a scalable, modular monorepo with clear separation of concerns.
 - **Full-Stack Development:** Built both frontend (Next.js, React, Tailwind) and backend (API, Prisma, PostgreSQL) modules.
-- **AI Integration:** Engineered prompt flows and data pipelines for AI-powered insights using Gemini/OpenAI.
-- **DevOps:** Automated deployments with Vercel and Docker, and managed environment configuration.
+- **AI Integration:** Engineered prompt flows and data pipelines for AI-powered insights using Gemini.
+- **DevOps:** Automated deployments with Vercel, and managed environment configuration.
 - **Testing & Quality:** Established a robust testing pipeline with unit, integration, and E2E tests.
 - **Security:** Implemented authentication, rate limiting, and user data isolation.
 - **Learning:** Deepened my expertise in serverless architectures, prompt engineering, and modern React patterns.  
-This project challenged me to think holistically about user experience, scalability, and maintainability—skills I am eager to bring to a world-class engineering team.
+This project challenged me to think holistically about user experience, scalability, and maintainability.
 
 ---
 
 ## Why This Project? (Motivation & Design Decisions)
 
 **Motivation:**  
-Personal finance is a universal challenge, and most tools are either too simplistic or too complex. I wanted to build a platform that combines usability, intelligence, and extensibility—empowering users to make smarter financial decisions with minimal effort.
+Personal finance is a universal challenge, and most tools are either too simplistic or too complex. I wanted to build a platform that combines usability, intelligence, and extensibility empowering users to make smarter financial decisions with minimal effort.
 
 **Design Decisions:**  
 - **AI-First Approach:** Integrated AI from the ground up for insights, not just as an add-on.
@@ -305,6 +265,39 @@ Personal finance is a universal challenge, and most tools are either too simplis
 - **Extensibility:** Modular codebase allows for easy addition of new features (e.g., investment tracking, multi-currency support).
 - **Automation:** Automated recurring tasks and reporting to reduce user friction.
 - **Modern Best Practices:** Adopted latest patterns in React, API design, and cloud deployment.
+
+---
+
+## Setup & Installation
+
+### Prerequisites
+
+- Node.js 18+
+- npm 9+
+- PostgreSQL database (local or Supabase)
+- Clerk, Gemini/OpenAI, Resend, Arcjet accounts for API keys
+
+### Steps
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/yourusername/finsight.git
+cd finsight
+
+# 2. Install dependencies
+npm install
+
+# 3. Configure environment variables
+cp .env.example .env.local
+# Edit .env.local with your credentials
+
+# 4. Set up the database
+npx prisma generate
+npx prisma db push
+
+# 5. Start the development server
+npm run dev
+```
 
 ---
 
@@ -319,11 +312,7 @@ Please write tests for new features and follow the existing code style.
 
 ---
 
-## License
 
-MIT License. See [LICENSE](LICENSE) for details.
-
----
 
 ## Acknowledgements
 
@@ -337,7 +326,3 @@ MIT License. See [LICENSE](LICENSE) for details.
 - [shadcn/ui](https://ui.shadcn.com/)
 - [Supabase](https://supabase.com/)
 
----
-
-**© 2025 FinSight**  
-*Your Financial Future, Illuminated*
