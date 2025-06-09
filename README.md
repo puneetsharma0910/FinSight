@@ -4,6 +4,23 @@
 
 ---
 
+## Demo & Screenshots
+
+<!-- 
+Replace the below link with your deployed app URL 
+-->
+**Live Demo:** [https://finsight-demo.vercel.app](https://finsight-demo.vercel.app)
+
+<!-- 
+Add screenshots or GIFs of your app below. 
+You can use Markdown image syntax and update the paths/URLs as needed.
+-->
+| Dashboard Overview | Expense Breakdown | AI Insights |
+|--------------------|------------------|-------------|
+| ![Dashboard](./public/screenshots/dashboard.png) | ![Pie Chart](./public/screenshots/piechart.png) | ![AI Insights](./public/screenshots/aiinsights.png) |
+
+---
+
 ## Table of Contents
 
 - [Overview](#overview)
