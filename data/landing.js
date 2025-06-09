@@ -8,17 +8,7 @@ import {
 } from "lucide-react";
 
 // Stats Data
-export const statsData = [
 
-  {
-    value: "99.9%",
-    label: "Uptime",
-  },
-  {
-    value: "4.9/5",
-    label: "User Rating",
-  },
-];
 
 // Features Data
 export const featuresData = [
