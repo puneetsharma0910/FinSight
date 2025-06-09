@@ -123,13 +123,13 @@ finsight/
 <!-- Make sure these files exist in the screenshots/ folder and the names match exactly (case-sensitive) -->
 
 **Landing Page**  
-![Landing Page](./screenshots/landingPage.png)
+![Landing Page](./screenshots/LandingPage.png)
 
 **Dashboard**  
-![Dashboard](./screenshots/dashboardPage.png)
+![Dashboard](./screenshots/DashboardPage.png)
 
 **Charts & Analytics**  
-![Charts](./screenshots/charts.png)
+![Charts](./screenshots/Charts.png)
 
 **Receipt Scanner**  
 ![Receipt Scanner](./screenshots/CreateTransaction.png)
