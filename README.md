@@ -6,7 +6,7 @@
 
 ## Demo
 
-**Live Demo:** [https://finsight-demo.vercel.app](https://finsight-demo.vercel.app)
+**Live Demo:** [https://finsight-three.vercel.app/](https://finsight-three.vercel.app/)
 
 ---
 
