@@ -11,15 +11,31 @@ const Header = async () => {
   return (
     <div className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b">
       <nav className="container mx-auto flex items-center justify-between ">
-        <Link href="/">
-          <Image
-            src={"/logo.png"}
-            alt="FinSight Logo"
-            width={200}
-            height={50}
-            className="h-12 w-auto object-contain"
-          />
-        </Link>
+
+
+<Link href="/">
+  <span className="flex items-center gap-2 font-extrabold text-2xl tracking-tight text-blue-700 select-none">
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      className="h-8 w-8"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect x="2" y="2" width="28" height="28" rx="8" fill="#2563eb" />
+      <path
+        d="M12 22V10h8M12 16h6"
+        stroke="#fff"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+    FinSight
+  </span>
+</Link>
+
         <div className="flex items-center space-x-4">
           <SignedIn>
             <Link
