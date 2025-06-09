@@ -68,16 +68,16 @@ export default function EmailTemplate({
             <Section style={styles.statsContainer}>
               <Section style={styles.stat}>
                 <Text style={styles.text}>Total Income</Text>
-                <Text style={styles.heading}>${data?.stats?.totalIncome || 0}</Text>
+                <Text style={styles.heading}>&#8377;{data?.stats?.totalIncome || 0}</Text>
               </Section>
               <Section style={styles.stat}>
                 <Text style={styles.text}>Total Expenses</Text>
-                <Text style={styles.heading}>${data?.stats?.totalExpenses || 0}</Text>
+                <Text style={styles.heading}>&#8377;{data?.stats?.totalExpenses || 0}</Text>
               </Section>
               <Section style={styles.stat}>
                 <Text style={styles.text}>Net</Text>
                 <Text style={styles.heading}>
-                  ${(data?.stats?.totalIncome || 0) - (data?.stats?.totalExpenses || 0)}
+                  &#8377;{(data?.stats?.totalIncome || 0) - (data?.stats?.totalExpenses || 0)}
                 </Text>
               </Section>
             </Section>
@@ -90,7 +90,7 @@ export default function EmailTemplate({
                   ([category, amount]) => (
                     <Section key={category} style={styles.statRow}>
                       <Text style={styles.categoryText}>{category}</Text>
-                      <Text style={styles.amountText}>${amount}</Text>
+                      <Text style={styles.amountText}>&#8377;{amount}</Text>
                     </Section>
                   )
                 )}

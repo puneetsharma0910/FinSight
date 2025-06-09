@@ -134,14 +134,14 @@ export function AccountChart({ transactions }) {
                 tickLine={false}
                 axisLine={false}
               />
-              <YAxis
+                           <YAxis
                 fontSize={12}
                 tickLine={false}
                 axisLine={false}
-                tickFormatter={(value) => `$${value}`}
+                tickFormatter={(value) => `₹${value}`}
               />
               <Tooltip
-                formatter={(value) => [`$${value}`, undefined]}
+                formatter={(value) => [`₹${value}`, undefined]}
                 contentStyle={{
                   backgroundColor: "hsl(var(--popover))",
                   border: "1px solid hsl(var(--border))",
