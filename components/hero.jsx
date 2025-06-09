@@ -120,8 +120,8 @@ const HeroSection = () => {
           >
             <Image
               src="/finsight.webp"
-              width={1280}
-              height={720}
+              width={1150}
+              height={550}
               alt="Dashboard Preview"
               className="rounded-2xl mx-auto"
               priority
