@@ -1,6 +1,5 @@
 import {
   Body,
-  Button,
   Container,
   Head,
   Heading,
@@ -9,20 +8,118 @@ import {
   Section,
   Text,
 } from "@react-email/components";
-import * as React from "react";
-export default function EmailTemplate({
-  userName = "User",
-  type = "budget-alert",
-  data = {
-    budgetAmount: 4000,
-    totalExpenses: 3400,
-    percentageUsed: 85,
+
+// Dummy data for preview
+const PREVIEW_DATA = {
+  monthlyReport: {
+    userName: "John Doe",
+    type: "monthly-report",
+    data: {
+      month: "December",
+      stats: {
+        totalIncome: 5000,
+        totalExpenses: 3500,
+        byCategory: {
+          housing: 1500,
+          groceries: 600,
+          transportation: 400,
+          entertainment: 300,
+          utilities: 700,
+        },
+      },
+      insights: [
+        "Your housing expenses are 43% of your total spending - consider reviewing your housing costs.",
+        "Great job keeping entertainment expenses under control this month!",
+        "Setting up automatic savings could help you save 20% more of your income.",
+      ],
+    },
   },
+  budgetAlert: {
+    userName: "John Doe",
+    type: "budget-alert",
+    data: {
+      percentageUsed: 85,
+      budgetAmount: 4000,
+      totalExpenses: 3400,
+    },
+  },
+};
+
+export default function EmailTemplate({
+  userName = "",
+  type = "monthly-report",
+  data = {},
 }) {
-  if (type == "monthly-report") {
+  if (type === "monthly-report") {
+    return (
+      <Html>
+        <Head />
+        <Preview>Your Monthly Financial Report</Preview>
+        <Body style={styles.body}>
+          <Container style={styles.container}>
+            <Heading style={styles.title}>Monthly Financial Report</Heading>
+
+            <Text style={styles.text}>Hello {userName},</Text>
+            <Text style={styles.text}>
+              Here&rsquo;s your financial summary for {data?.month || 'this month'}:
+            </Text>
+
+            {/* Main Stats */}
+            <Section style={styles.statsContainer}>
+              <Section style={styles.stat}>
+                <Text style={styles.text}>Total Income</Text>
+                <Text style={styles.heading}>${data?.stats?.totalIncome || 0}</Text>
+              </Section>
+              <Section style={styles.stat}>
+                <Text style={styles.text}>Total Expenses</Text>
+                <Text style={styles.heading}>${data?.stats?.totalExpenses || 0}</Text>
+              </Section>
+              <Section style={styles.stat}>
+                <Text style={styles.text}>Net</Text>
+                <Text style={styles.heading}>
+                  ${(data?.stats?.totalIncome || 0) - (data?.stats?.totalExpenses || 0)}
+                </Text>
+              </Section>
+            </Section>
+
+            {/* Category Breakdown */}
+            {data?.stats?.byCategory && (
+              <Section style={styles.section}>
+                <Heading style={styles.heading}>Expenses by Category</Heading>
+                {Object.entries(data.stats.byCategory).map(
+                  ([category, amount]) => (
+                    <Section key={category} style={styles.statRow}>
+                      <Text style={styles.categoryText}>{category}</Text>
+                      <Text style={styles.amountText}>${amount}</Text>
+                    </Section>
+                  )
+                )}
+              </Section>
+            )}
+
+            {/* AI Insights */}
+            {data?.insights && (
+              <Section style={styles.section}>
+                <Heading style={styles.heading}>FinSight Insights</Heading>
+                {data.insights.map((insight, index) => (
+                  <Text key={index} style={styles.text}>
+                    • {insight}
+                  </Text>
+                ))}
+              </Section>
+            )}
+
+            <Text style={styles.footer}>
+              Thank you for using FinSight. Keep tracking your finances for better
+              financial health!
+            </Text>
+          </Container>
+        </Body>
+      </Html>
+    );
   }
 
-  if (type == "budget-alert") {
+  if (type === "budget-alert") {
     return (
       <Html>
         <Head />
@@ -32,33 +129,54 @@ export default function EmailTemplate({
             <Heading style={styles.title}>Budget Alert</Heading>
             <Text style={styles.text}>Hello {userName},</Text>
             <Text style={styles.text}>
-              {/* You&rsquo;ve used {data?.percentageUsed.toFixed(1)}% of your
-              monthly budget. */}
-               You've used{" "}
-              {data?.percentageUsed ? data.percentageUsed.toFixed(1) : "0"}% of
-              your monthly budget.
+              You&rsquo;ve used {data?.percentageUsed ? data.percentageUsed.toFixed(1) : "0"}% of your
+              monthly budget.
             </Text>
             <Section style={styles.statsContainer}>
               <Section style={styles.stat}>
                 <Text style={styles.text}>Budget Amount</Text>
-                <Text style={styles.heading}>&#8377;{data?.budgetAmount}</Text>
+                <Text style={styles.heading}>₹{data?.budgetAmount || 0}</Text>
               </Section>
               <Section style={styles.stat}>
                 <Text style={styles.text}>Spent So Far</Text>
-                <Text style={styles.heading}>&#8377;{data?.totalExpenses}</Text>
+                <Text style={styles.heading}>₹{data?.totalExpenses || 0}</Text>
               </Section>
               <Section style={styles.stat}>
                 <Text style={styles.text}>Remaining</Text>
                 <Text style={styles.heading}>
-                  &#8377;{data?.budgetAmount - data?.totalExpenses}
+                  ₹{(Number(data?.budgetAmount || 0) - Number(data?.totalExpenses || 0)).toFixed(2)}
                 </Text>
               </Section>
             </Section>
+
+            <Text style={styles.footer}>
+              This is an automated alert from your FinSight account.
+            </Text>
           </Container>
         </Body>
       </Html>
     );
   }
+
+  // Default return if type doesn't match
+  return (
+    <Html>
+      <Head />
+      <Preview>FinSight Notification</Preview>
+      <Body style={styles.body}>
+        <Container style={styles.container}>
+          <Heading style={styles.title}>FinSight Notification</Heading>
+          <Text style={styles.text}>Hello {userName},</Text>
+          <Text style={styles.text}>
+            This is a notification from FinSight.
+          </Text>
+          <Text style={styles.footer}>
+            Thank you for using FinSight.
+          </Text>
+        </Container>
+      </Body>
+    </Html>
+  );
 }
 
 const styles = {
@@ -72,6 +190,7 @@ const styles = {
     padding: "20px",
     borderRadius: "5px",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+    maxWidth: "600px",
   },
   title: {
     color: "#1f2937",
@@ -109,13 +228,22 @@ const styles = {
     padding: "12px",
     backgroundColor: "#fff",
     borderRadius: "4px",
-    // boxShadow: "0 1px 2px rgba(0, 0, 0, 0.05)",
+    boxShadow: "0 1px 2px rgba(0, 0, 0, 0.05)",
   },
-  row: {
-    // display: "flex",
-    justifyContent: "space-between",
+  statRow: {
     padding: "12px 0",
     borderBottom: "1px solid #e5e7eb",
+  },
+  categoryText: {
+    color: "#4b5563",
+    fontSize: "16px",
+    margin: "0 0 8px",
+  },
+  amountText: {
+    color: "#4b5563",
+    fontSize: "16px",
+    margin: "0 0 8px",
+    fontWeight: "500",
   },
   footer: {
     color: "#6b7280",
