@@ -4,19 +4,9 @@
 
 ---
 
-## Demo & Screenshots
+## Demo
 
-<!-- 
-Replace the below link with your deployed app URL 
--->
 **Live Demo:** [https://finsight-demo.vercel.app](https://finsight-demo.vercel.app)
-<!--
-Add screenshots or GIFs of your app below.
-You can use Markdown image syntax and update the paths/URLs as needed.
--->
-| Landing Page | Dashboard | Charts & Analytics | Receipt Scanner | Email Alert |
-|--------------|-----------|-------------------|----------------|-------------|
-| ![Landing Page](./screenshots/LandingPage.png) | ![Dashboard](./screenshots/DashboardPage.png) | ![Charts](./screenshots/Charts.png) | ![Receipt Scanner](./screenshots/CreateTransaction.png) | ![Email Alert](./screenshots/EmailAlerts.png) |
 
 ---
 
@@ -27,6 +17,7 @@ You can use Markdown image syntax and update the paths/URLs as needed.
 - [Tech Stack](#tech-stack)
 - [Architecture](#architecture)
 - [Project Structure](#project-structure)
+- [Screenshots](#screenshots)
 - [Environment Variables](#environment-variables)
 - [Core Modules & Workflows](#core-modules--workflows)
 - [AI & Automation](#ai--automation)
@@ -119,10 +110,32 @@ finsight/
 ├── emails/                 # Email templates (React components)
 ├── prisma/                 # Prisma schema and migrations
 ├── public/                 # Static assets
+├── screenshots/            # App screenshots for README
 ├── tests/                  # Unit and integration tests
 ├── .env.example            # Example environment variables
 └── README.md               # Project documentation
 ```
+
+---
+
+## Screenshots
+
+<!-- Make sure these files exist in the screenshots/ folder and the names match exactly (case-sensitive) -->
+
+**Landing Page**  
+![Landing Page](./screenshots/landingPage.png)
+
+**Dashboard**  
+![Dashboard](./screenshots/dashboardPage.png)
+
+**Charts & Analytics**  
+![Charts](./screenshots/charts.png)
+
+**Receipt Scanner**  
+![Receipt Scanner](./screenshots/CreateTransaction.png)
+
+**Email Alert**  
+![Email Alert](./screenshots/EmailAlerts.png)
 
 ---
 
@@ -222,7 +235,14 @@ npm install -g vercel
 vercel deploy --prod
 ```
 
+### Docker
 
+```bash
+docker build -t finsight:latest .
+docker run -p 3000:3000 --env-file .env.local finsight:latest
+```
+
+---
 
 ## API Endpoints
 
@@ -311,8 +331,6 @@ Please write tests for new features and follow the existing code style.
 
 ---
 
-
-
 ## Acknowledgements
 
 - [Next.js](https://nextjs.org/)
@@ -324,4 +342,3 @@ Please write tests for new features and follow the existing code style.
 - [Arcjet](https://arcjet.com/)
 - [shadcn/ui](https://ui.shadcn.com/)
 - [Supabase](https://supabase.com/)
-
