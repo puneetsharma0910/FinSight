@@ -6,7 +6,7 @@
 
 ## Demo
 
-**Live Demo:** [https://finsight-demo.vercel.app](https://finsight-demo.vercel.app)
+**Live Demo:** [https://finsight-three.vercel.app/](https://finsight-three.vercel.app/)
 
 ---
 
@@ -123,13 +123,13 @@ finsight/
 <!-- Make sure these files exist in the screenshots/ folder and the names match exactly (case-sensitive) -->
 
 **Landing Page**  
-![Landing Page](./screenshots/landingPage.png)
+![Landing Page](./screenshots/LandingPage.png)
 
 **Dashboard**  
-![Dashboard](./screenshots/dashboardPage.png)
+![Dashboard](./screenshots/DashboardPage.png)
 
 **Charts & Analytics**  
-![Charts](./screenshots/charts.png)
+![Charts](./screenshots/Charts.png)
 
 **Receipt Scanner**  
 ![Receipt Scanner](./screenshots/CreateTransaction.png)
