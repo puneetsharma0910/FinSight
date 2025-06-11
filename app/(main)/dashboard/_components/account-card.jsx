@@ -70,11 +70,11 @@ const AccountCard = ({ account }) => {
         </CardContent>
         <CardFooter className="flex justify-between text-sm text-muted-foreground">
           <div className="flex items-center">
-            <ArrowUpRight className="mr-1 h-4 w-4 text-green-500" />
+            <ArrowDownRight className="mr-1 h-4 w-4 text-green-500" />
             Income
           </div>
           <div className="flex items-center">
-            <ArrowDownRight className="mr-1 h-4 w-4 text-red-500" />
+            <ArrowUpRight className="mr-1 h-4 w-4 text-red-500" />
             Expense
           </div>
         </CardFooter>
